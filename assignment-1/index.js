@@ -12,6 +12,13 @@ var https = require('https');
 var url = require('url');
 var StringDecoder = require("string_decoder").StringDecoder;
 var fs = require('fs');
+var helpers = require('./lib/helpers');
+
+//@TODO: Get RID
+helpers.sendTwilioSms('21772998', 'Hello', (err)=>{
+  console.log('SEND TWIL');
+  console.log('There was an error', err);
+});
 
  // Instantiating the HTTP Server
 var httpServer = http.createServer((req, res) => {
@@ -142,5 +149,7 @@ handlers.notFound = (data, callback) => {
 // Defining a request router
 var router = {
   'hello' : handlers.hello,
-  'ping' : handlers.ping
+  'ping' : handlers.ping,
+  'users' : handlers.users,
+  'checks' : handlers.checks
 }
